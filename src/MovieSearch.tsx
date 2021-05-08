@@ -41,7 +41,7 @@ export const MovieSearch: FC = () => {
     const search = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("http://www.omdbapi.com", {
+        const { data } = await axios.get("https://www.omdbapi.com", {
           params: { apikey: "22aa1b2", s: deQuery },
         });
         if (data.Search) {
