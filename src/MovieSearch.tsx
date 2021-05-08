@@ -28,7 +28,7 @@ const PAST_MOVIE_NOMS_KEY = "PAST_MOVIE_NOMINATIONS";
 export const MovieSearch: FC = () => {
   const [query, setQuery] = useState("");
   const [deQuery] = useDebounce(query, 1000);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const initialMovieNoms = useMemo<MovieInfo[]>(() => {
     const value = localStorage.getItem(PAST_MOVIE_NOMS_KEY);
