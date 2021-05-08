@@ -8,13 +8,16 @@ import {
   Code,
   Grid,
   theme,
+  Container,
+  Heading,
 } from "@chakra-ui/react"
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
 import { Logo } from "./Logo"
+import { MovieSearch } from "./MovieSearch"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
+    {/* <Box textAlign="center" fontSize="xl">
       <Grid minH="100vh" p={3}>
         <ColorModeSwitcher justifySelf="flex-end" />
         <VStack spacing={8}>
@@ -33,6 +36,7 @@ export const App = () => (
           </Link>
         </VStack>
       </Grid>
-    </Box>
+    </Box> */}
+    <MovieSearch />
   </ChakraProvider>
 )
