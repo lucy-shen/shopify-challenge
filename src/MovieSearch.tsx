@@ -106,7 +106,7 @@ export const MovieSearch: FC = () => {
             <AlertIcon />5 nominees selected!
           </Alert>
         )}
-        <Stack align="stretch" minH={96} direction={["column", null, "row"]}>
+        <Stack align="stretch" minH={96} direction={["column", null, "row", null]}>
           <VStack
             align="stretch"
             flex={1}
