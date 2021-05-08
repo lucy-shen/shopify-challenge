@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useDebounce } from "use-debounce";
+import { uniqBy } from "lodash";
 
 import {
   Text,
@@ -14,7 +15,7 @@ import {
   Spinner,
   Alert,
   AlertIcon,
-  Stack
+  Stack,
 } from "@chakra-ui/react";
 
 type MovieInfo = {
@@ -22,6 +23,7 @@ type MovieInfo = {
   Year: string;
   Poster: string;
   imdbID: string;
+  Type: string;
 };
 
 const PAST_MOVIE_NOMS_KEY = "PAST_MOVIE_NOMINATIONS";
@@ -46,7 +48,11 @@ export const MovieSearch: FC = () => {
           params: { apikey: "22aa1b2", s: deQuery },
         });
         if (data.Search) {
-          setMovieResults(data.Search);
+          const movies: MovieInfo[] = data.Search.filter(
+            (item: MovieInfo) => item.Type === "movie"
+          );
+          const uniqueMovies = uniqBy(movies, "imdbID");
+          setMovieResults(uniqueMovies);
         } else if (data.Error) {
           if (data.Error === "Movie not found!") {
           } else {
@@ -106,7 +112,11 @@ export const MovieSearch: FC = () => {
             <AlertIcon />5 nominees selected!
           </Alert>
         )}
-        <Stack align="stretch" minH={96} direction={["column", null, "row", null]}>
+        <Stack
+          align="stretch"
+          minH={96}
+          direction={["column", null, "row", null]}
+        >
           <VStack
             align="stretch"
             flex={1}
