@@ -3,7 +3,6 @@ import axios from "axios";
 import { useDebounce } from "use-debounce";
 
 import {
-  Box,
   Text,
   VStack,
   Input,

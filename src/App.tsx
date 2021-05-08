@@ -1,22 +1,12 @@
 import * as React from "react"
 import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-  Container,
-  Heading,
+  ChakraProvider
 } from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+// import { ColorModeSwitcher } from "./ColorModeSwitcher"
 import { MovieSearch } from "./MovieSearch"
 
 export const App = () => (
-  <ChakraProvider theme={theme}>
+  <ChakraProvider>
     <MovieSearch />
   </ChakraProvider>
 )
