@@ -14,6 +14,7 @@ import {
   Spinner,
   Alert,
   AlertIcon,
+  Stack
 } from "@chakra-ui/react";
 
 type MovieInfo = {
@@ -105,7 +106,7 @@ export const MovieSearch: FC = () => {
             <AlertIcon />5 nominees selected!
           </Alert>
         )}
-        <HStack align="stretch" minH={96}>
+        <Stack align="stretch" minH={96} direction={["column", null, "row"]}>
           <VStack
             align="stretch"
             flex={1}
@@ -178,7 +179,7 @@ export const MovieSearch: FC = () => {
               );
             })}
           </VStack>
-        </HStack>
+        </Stack>
       </VStack>
     </Container>
   );
