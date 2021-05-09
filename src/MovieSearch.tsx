@@ -17,6 +17,8 @@ import {
   AlertIcon,
   Stack,
   Image,
+  Link,
+  Box,
 } from "@chakra-ui/react";
 import { MovieLinks } from "./MovieLinks";
 
@@ -208,6 +210,15 @@ export const MovieSearch: FC = () => {
           </VStack>
         </Stack>
       </VStack>
+
+      <Link href="https://lucy-shen.me/" isExternal color="pink.600">
+        <HStack pt={5}>
+        <Image boxSize="25px" src="/lucy-round.png" />
+          <Text>
+          Lucy Shen
+          </Text>
+        </HStack>
+      </Link>
     </Container>
   );
 };
