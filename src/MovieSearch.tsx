@@ -18,7 +18,6 @@ import {
   Stack,
   Image,
   Link,
-  Box,
 } from "@chakra-ui/react";
 import { MovieLinks } from "./MovieLinks";
 
