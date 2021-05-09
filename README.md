@@ -1,4 +1,16 @@
 Live site: https://shopify-challenge.lucy-shen.me/
+
+In addition to the technial requirements, I have also added the following:
+
+Extras implemented:
+-Loading and button animations
+-Nominations saved when leaving page (using Local Storage)
+-Copy or go-to IMDB link
+
+Other feaatures:
+-Added movie posters 
+-Remove movie duplicates
+
 ## Available Scripts
 
 In the project directory, you can run:
