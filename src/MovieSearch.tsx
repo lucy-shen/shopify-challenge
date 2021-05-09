@@ -16,9 +16,12 @@ import {
   Alert,
   AlertIcon,
   Stack,
+  Image,
+  useToast,
 } from "@chakra-ui/react";
+import { MovieLinks } from "./MovieLinks";
 
-type MovieInfo = {
+export type MovieInfo = {
   Title: string;
   Year: string;
   Poster: string;
@@ -39,6 +42,8 @@ export const MovieSearch: FC = () => {
   }, []);
   const [movieResults, setMovieResults] = useState<MovieInfo[]>([]);
   const [movieNoms, setMovieNoms] = useState<MovieInfo[]>(initialMovieNoms);
+
+  const toast = useToast();
 
   useEffect(() => {
     const search = async () => {
@@ -126,29 +131,35 @@ export const MovieSearch: FC = () => {
             borderRadius="md"
             p={4}
           >
-            <Heading fontSize="3xl">Results</Heading>
+            <Heading fontSize="2xl">Results</Heading>
             {movieResults.length > 0 ? (
               movieResults.map((item) => {
                 return (
-                  <HStack>
+                  <HStack bg="gray.50" borderRadius="md" p={2}>
+                    <Image boxSize={20} fit="contain" src={item.Poster} />
                     <VStack align="stretch" flex={1} spacing={0}>
-                      <Text fontSize="xl" fontWeight="semibold">
+                      <Text fontSize="lg" fontWeight="semibold">
                         {item.Title}
                       </Text>
-                      <Text fontSize="lg">{item.Year}</Text>
+                      <Text fontSize="md">{item.Year}</Text>
                     </VStack>
-                    <Button
-                      onClick={() => {
-                        setMovieNoms([...movieNoms, item]);
-                      }}
-                      isDisabled={
-                        movieNoms.some((nom) => {
-                          return nom.imdbID === item.imdbID;
-                        }) || movieNoms.length >= 5
-                      }
-                    >
-                      Nominate
-                    </Button>
+                    <VStack align="stretch">
+                      <Button
+                        onClick={() => {
+                          setMovieNoms([...movieNoms, item]);
+                        }}
+                        isDisabled={
+                          movieNoms.some((nom) => {
+                            return nom.imdbID === item.imdbID;
+                          }) || movieNoms.length >= 5
+                        }
+                        colorScheme="pink"
+                        w={28}
+                      >
+                        Nominate
+                      </Button>
+                      <MovieLinks item={item} />;
+                    </VStack>
                   </HStack>
                 );
               })
@@ -165,26 +176,33 @@ export const MovieSearch: FC = () => {
             borderRadius="md"
             p={4}
           >
-            <Heading fontSize="3xl">Nominations</Heading>
+            <Heading fontSize="2xl">Nominations</Heading>
             {movieNoms.map((item) => {
               return (
-                <HStack>
+                <HStack bg="gray.50" borderRadius="md" p={2}>
+                  <Image boxSize={20} fit="contain" src={item.Poster} />
                   <VStack align="stretch" flex={1} spacing={0}>
-                    <Text fontSize="xl" fontWeight="semibold">
+                    <Text fontSize="lg" fontWeight="semibold">
                       {item.Title}
                     </Text>
-                    <Text fontSize="lg">{item.Year}</Text>
+                    <Text fontSize="md">{item.Year}</Text>
                   </VStack>
-                  <Button
-                    onClick={() => {
-                      const noms = movieNoms.filter((oneOfTheMoviesInNom) => {
-                        return oneOfTheMoviesInNom.imdbID !== item.imdbID;
-                      });
-                      setMovieNoms(noms);
-                    }}
-                  >
-                    Remove
-                  </Button>
+                  <VStack align="stretch">
+                    <Button
+                      onClick={() => {
+                        const noms = movieNoms.filter((oneOfTheMoviesInNom) => {
+                          return oneOfTheMoviesInNom.imdbID !== item.imdbID;
+                        });
+                        setMovieNoms(noms);
+                      }}
+                      w={28}
+                      colorScheme="pink"
+                      variant="outline"
+                    >
+                      Remove
+                    </Button>
+                    <MovieLinks item={item} />;
+                  </VStack>
                 </HStack>
               );
             })}
