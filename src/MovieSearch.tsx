@@ -17,7 +17,6 @@ import {
   AlertIcon,
   Stack,
   Image,
-  useToast,
 } from "@chakra-ui/react";
 import { MovieLinks } from "./MovieLinks";
 
@@ -42,8 +41,6 @@ export const MovieSearch: FC = () => {
   }, []);
   const [movieResults, setMovieResults] = useState<MovieInfo[]>([]);
   const [movieNoms, setMovieNoms] = useState<MovieInfo[]>(initialMovieNoms);
-
-  const toast = useToast();
 
   useEffect(() => {
     const search = async () => {
@@ -100,10 +97,12 @@ export const MovieSearch: FC = () => {
     <Container py={12} maxW="container.lg">
       <VStack align="stretch" spacing={4}>
         <VStack align="stretch">
-          <Heading size="2xl">The Shoppies</Heading>
+          <Heading size="2xl" color="pink.600">
+            The Shoppies
+          </Heading>
+          <Text fontSize="lg">Nominate 5 movies for The Shoppies 2021!</Text>
           <Text fontSize="lg">
-            Nominate 5 movies. Your nominations will be saved if you leave this
-            page.
+            Your nominations will be saved if you leave this page.
           </Text>
         </VStack>
         <Input
@@ -113,7 +112,7 @@ export const MovieSearch: FC = () => {
           onChange={(event) => setQuery(event.target.value)}
         />
         {movieNoms.length >= 5 && (
-          <Alert status="success" fontSize="lg">
+          <Alert status="success" fontSize="lg" borderRadius="md">
             <AlertIcon />5 nominees selected!
           </Alert>
         )}

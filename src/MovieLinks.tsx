@@ -1,17 +1,12 @@
 import React, { FC } from "react";
 import type { MovieInfo } from "./MovieSearch";
 
-import {
-  HStack,
-  Link,
-  IconButton,
-  useToast,
-} from "@chakra-ui/react";
+import { HStack, Link, IconButton, useToast } from "@chakra-ui/react";
 import { ExternalLinkIcon, LinkIcon } from "@chakra-ui/icons";
 
-export type MovieCardProps = { 
+export type MovieCardProps = {
   item: MovieInfo;
-}
+};
 
 export const MovieLinks: FC<MovieCardProps> = (props) => {
   const toast = useToast();
